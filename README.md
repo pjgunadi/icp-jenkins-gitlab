@@ -73,6 +73,7 @@ helm install --name your-jenkins-release-name --namespace your-namespace --set M
    - Type in filter: *your-release-name* and open the jenkins service
    - Open link in **Node port** row
 7. Get Jenkins initial password from kubectl command line:
+   - check jenkins secret name: `kubectl get secrets`, note down the secret name, and replace `<your-jenkins-secret>` below with the value provided from this command
    - username: `kubectl get secrets <your-jenkins-secret> -o jsonpath='{.data.jenkins-admin-user}' | base64 -D; echo`
    - password: `kubectl get secrets <your-jenkins-secret> -o jsonpath='{.data.jenkins-admin-password}' | base64 -D; echo`
 8. Login to Jenkins with provided credentials
@@ -98,6 +99,7 @@ helm install --name <type-your-gitlab-release-name> --set externalUrl=http://<ty
 ## Configure Jenkins-Gitlab Integration
 ### Jenkins Configuration
 1. Get Jenkins initial password from kubectl command line:
+   - check jenkins secret name: `kubectl get secrets`, note down the secret name, and replace `<your-jenkins-secret>` below with the value provided from this command
    - username: `kubectl get secrets <your-jenkins-secret> -o jsonpath='{.data.jenkins-admin-user}' | base64 -D; echo`
    - password: `kubectl get secrets <your-jenkins-secret> -o jsonpath='{.data.jenkins-admin-password}' | base64 -D; echo`
 2. Login to Jenkins with provided credentials   
